@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour {
 
     public BoardManager boardScript;
 
+    public int playerFoodPoints = 100;
+    [HideInInspector] public bool playersTurn = true;
+
     private int level = 3;
 
 	// Use this for initialization
@@ -30,5 +33,10 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void GameOver()
+	{
+	    enabled = false;
 	}
 }
