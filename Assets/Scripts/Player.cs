@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Player : MovingObject {
 
-    public int wallDamage = 1;
+    public float restartLevelDelay = 1f;
     public int pointsPerFood = 10;
     public int pointsPerSoda = 20;
-    public float restartLevelDelay = 1f;
+    public int wallDamage = 1;
 
     private Animator animator;
     private int food;
@@ -33,8 +33,8 @@ public class Player : MovingObject {
 
     	int horizontal = 0;
     	int vertical = 0;
-    	horizontal = (int) Input.GetAxisRaw("Horizontal");
-    	vertical = (int) Input.GetAxisRaw("Vertical");
+    	horizontal = (int) (Input.GetAxisRaw("Horizontal"));
+    	vertical = (int) (Input.GetAxisRaw("Vertical"));
 
     	if (horizontal != 0) {
     	    vertical = 0;
@@ -56,7 +56,7 @@ public class Player : MovingObject {
         GameManager.instance.playersTurn = false;
     }
 
-    private void OnEnterTrigger2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Exit") {
             Invoke("Restart", restartLevelDelay); // wait 1 sec before to launch
             enabled = false;

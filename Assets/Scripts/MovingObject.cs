@@ -27,6 +27,7 @@ public abstract class MovingObject : MonoBehaviour {
         boxCollider.enabled = true;
         if (hit.transform == null) {
             StartCoroutine(SmoothMovement(end));
+
             return true;
         }
 
@@ -50,10 +51,12 @@ public abstract class MovingObject : MonoBehaviour {
 	protected IEnumerator SmoothMovement (Vector3 end)
 	{
 	    float sqrRemainingDistance = (transform.position - end).sqrMagnitude;
-	    while (sqrRemainingDistance < float.Epsilon) {
+
+	    while (sqrRemainingDistance > float.Epsilon) {
 	        Vector3 newPosition = Vector3.MoveTowards(rb2D.position, end, inverseMoveTime * Time.deltaTime);
 	        rb2D.MovePosition(newPosition);
 	        sqrRemainingDistance = (transform.position - end).sqrMagnitude;
+
 	        yield return null;
 	    }
 	}
