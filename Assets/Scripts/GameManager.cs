@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI     ;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
     public float levelStartDelay = 2f;
-    public float turnDelay = 1f;
+    public float turnDelay = 0.1f;
     public static GameManager instance = null;
     public BoardManager boardScript;
     public int playerFoodPoints = 100;
